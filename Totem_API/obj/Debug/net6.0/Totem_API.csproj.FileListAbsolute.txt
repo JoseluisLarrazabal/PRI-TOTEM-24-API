@@ -2061,3 +2061,4 @@ C:\Users\Bojji\Desktop\PROYECTO TOTEM\PRI-TOTEM-24-API\Totem_API\obj\Debug\net6.
 C:\Users\Bojji\Desktop\PROYECTO TOTEM\PRI-TOTEM-24-API\Totem_API\obj\Debug\net6.0\Totem_API.pdb
 C:\Users\Bojji\Desktop\PROYECTO TOTEM\PRI-TOTEM-24-API\Totem_API\obj\Debug\net6.0\Totem_API.genruntimeconfig.cache
 C:\Users\Bojji\Desktop\PROYECTO TOTEM\PRI-TOTEM-24-API\Totem_API\obj\Debug\net6.0\ref\Totem_API.dll
+C:\Users\Bojji\Desktop\PROYECTO TOTEM\PRI-TOTEM-24-API\Totem_API\obj\Debug\net6.0\Totem_API.sourcelink.json

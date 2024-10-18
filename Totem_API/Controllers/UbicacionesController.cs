@@ -25,7 +25,39 @@ namespace Totem_API.Controllers
             return await _context.Ubicacion.ToListAsync();
         }
 
-        // GET: api/Ubicaciones/5
+        // GET: api/Ubicaciones/BuscarPorNombre
+        [HttpGet("BuscarPorNombre")]
+        public async Task<ActionResult<Ubicacion>> GetUbicacionPorNombre([FromQuery] string nombre)
+        {
+            // Convertimos la primera letra a mayúscula y el resto a minúscula para asegurar coincidencia con la base de datos
+            string nombreFormateado = char.ToUpper(nombre[0]) + nombre.Substring(1).ToLower();
+
+            // Log de verificación
+            Console.WriteLine($"Nombre recibido del frontend: {nombre}");
+            Console.WriteLine($"Nombre formateado: {nombreFormateado}");
+
+            var ubicacion = await _context.Ubicacion.FirstOrDefaultAsync(u => u.Nombre == nombreFormateado);
+
+            if (ubicacion == null)
+            {
+                return NotFound("Ubicación no encontrada.");
+            }
+
+            return Ok(new
+            {
+                ubicacion.Id,
+                ubicacion.Nombre,
+                ubicacion.Latitud,
+                ubicacion.Longitud,
+                ubicacion.Direccion
+            });
+        }
+
+
+
+
+
+        /// GET: api/Ubicaciones/{id}
         [HttpGet("{id}")]
         public async Task<ActionResult<Ubicacion>> GetUbicacion(int id)
         {
@@ -36,7 +68,14 @@ namespace Totem_API.Controllers
                 return NotFound();
             }
 
-            return ubicacion;
+            return Ok(new
+            {
+                ubicacion.Id,
+                ubicacion.Nombre,
+                ubicacion.Latitud,
+                ubicacion.Longitud,
+                ubicacion.Direccion
+            });
         }
 
         // POST: api/Ubicaciones
