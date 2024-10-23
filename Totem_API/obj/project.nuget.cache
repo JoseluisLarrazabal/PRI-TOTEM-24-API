@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Sg6g21aCmgA=",
+  "dgSpecHash": "ofmDvjBaaNM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Bojji\\Desktop\\PROYECTO TOTEM\\PRI-TOTEM-24-API\\Totem_API\\Totem_API.csproj",
+  "projectFilePath": "C:\\Users\\Bojji\\Desktop\\PROYECTO TOTEM\\PRI-TOTEM-24-API\\PRI-TOTEM-24-API\\Totem_API\\Totem_API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Bojji\\.nuget\\packages\\azure.core\\1.31.0\\azure.core.1.31.0.nupkg.sha512",
     "C:\\Users\\Bojji\\.nuget\\packages\\azure.storage.blobs\\12.16.0\\azure.storage.blobs.12.16.0.nupkg.sha512",

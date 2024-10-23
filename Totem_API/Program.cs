@@ -3,72 +3,60 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Totem_API.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
+// Configurar la base de datos
 builder.Services.AddDbContext<TotemContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-
-
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-
+// Configurar CORS (Permitir todas las solicitudes)
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("NuevaPolitica", app =>
     {
         app.AllowAnyOrigin()
-        .AllowAnyHeader()
-        .AllowAnyMethod();
+           .AllowAnyMethod()
+           .AllowAnyHeader();
     });
 });
 
-
-//Authentication
+// Configurar autenticación JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
     options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
     {
         ValidateIssuer = false,
         ValidateAudience = false,
-        //ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
     };
 });
-//EndAuth
+
+// Añadir controladores y Swagger
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-app.UseCors(builder => builder
-    .AllowAnyOrigin()
-    .AllowAnyMethod()
-    .AllowAnyHeader());
+// Aplicar la política de CORS globalmente
+app.UseCors("NuevaPolitica");
 
-
-// Configure the HTTP request pipeline.
+// Configurar el pipeline de middleware
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseCors();
-//Nico
-app.UseCors("NuevaPolitica");
-app.UseRouting();
 
 app.UseHttpsRedirection();
-//Auth
+
+// Autenticación y autorización
 app.UseAuthentication();
-//End
 app.UseAuthorization();
 
+// Mapear controladores
 app.MapControllers();
 
 app.Run();
-

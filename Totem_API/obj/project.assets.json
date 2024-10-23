@@ -10611,11 +10611,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bojji\\Desktop\\PROYECTO TOTEM\\PRI-TOTEM-24-API\\Totem_API\\Totem_API.csproj",
+      "projectUniqueName": "C:\\Users\\Bojji\\Desktop\\PROYECTO TOTEM\\PRI-TOTEM-24-API\\PRI-TOTEM-24-API\\Totem_API\\Totem_API.csproj",
       "projectName": "Totem_API",
-      "projectPath": "C:\\Users\\Bojji\\Desktop\\PROYECTO TOTEM\\PRI-TOTEM-24-API\\Totem_API\\Totem_API.csproj",
+      "projectPath": "C:\\Users\\Bojji\\Desktop\\PROYECTO TOTEM\\PRI-TOTEM-24-API\\PRI-TOTEM-24-API\\Totem_API\\Totem_API.csproj",
       "packagesPath": "C:\\Users\\Bojji\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bojji\\Desktop\\PROYECTO TOTEM\\PRI-TOTEM-24-API\\Totem_API\\obj\\",
+      "outputPath": "C:\\Users\\Bojji\\Desktop\\PROYECTO TOTEM\\PRI-TOTEM-24-API\\PRI-TOTEM-24-API\\Totem_API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Bojji\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -10722,7 +10722,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   },
