@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Totem_API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b5c1715782204581caba6c1e5482881ffaf37cb0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+154ac44938f97994b755dbdb1ddccaddbeb6bc6b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Totem_API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Totem_API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

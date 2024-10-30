@@ -7,12 +7,8 @@
       "RelativeMoniker": "D:0:0:{0B517AE9-E30C-40B9-A5F0-6F0C911A60FE}|Totem_API\\Totem_API.csproj|solutionrelative:totem_api\\controllers\\ubicacionescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0B517AE9-E30C-40B9-A5F0-6F0C911A60FE}|Totem_API\\Totem_API.csproj|c:\\users\\bojji\\desktop\\proyecto totem\\pri-totem-24-api\\pri-totem-24-api\\totem_api\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0B517AE9-E30C-40B9-A5F0-6F0C911A60FE}|Totem_API\\Totem_API.csproj|solutionrelative:totem_api\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0B517AE9-E30C-40B9-A5F0-6F0C911A60FE}|Totem_API\\Totem_API.csproj|c:\\users\\bojji\\desktop\\proyecto totem\\pri-totem-24-api\\pri-totem-24-api\\totem_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0B517AE9-E30C-40B9-A5F0-6F0C911A60FE}|Totem_API\\Totem_API.csproj|solutionrelative:totem_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0B517AE9-E30C-40B9-A5F0-6F0C911A60FE}|Totem_API\\Totem_API.csproj|c:\\users\\bojji\\desktop\\proyecto totem\\pri-totem-24-api\\pri-totem-24-api\\totem_api\\data\\totemcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B517AE9-E30C-40B9-A5F0-6F0C911A60FE}|Totem_API\\Totem_API.csproj|solutionrelative:totem_api\\data\\totemcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -43,26 +39,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UsuariosController.cs",
-              "DocumentMoniker": "C:\\Users\\Bojji\\Desktop\\PROYECTO TOTEM\\PRI-TOTEM-24-API\\PRI-TOTEM-24-API\\Totem_API\\Controllers\\UsuariosController.cs",
-              "RelativeDocumentMoniker": "Totem_API\\Controllers\\UsuariosController.cs",
-              "ToolTip": "C:\\Users\\Bojji\\Desktop\\PROYECTO TOTEM\\PRI-TOTEM-24-API\\PRI-TOTEM-24-API\\Totem_API\\Controllers\\UsuariosController.cs",
-              "RelativeToolTip": "Totem_API\\Controllers\\UsuariosController.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAqwCUAAABNAAAAAAAAAA==",
+              "Title": "TotemContext.cs",
+              "DocumentMoniker": "C:\\Users\\Bojji\\Desktop\\PROYECTO TOTEM\\PRI-TOTEM-24-API\\PRI-TOTEM-24-API\\Totem_API\\Data\\TotemContext.cs",
+              "RelativeDocumentMoniker": "Totem_API\\Data\\TotemContext.cs",
+              "ToolTip": "C:\\Users\\Bojji\\Desktop\\PROYECTO TOTEM\\PRI-TOTEM-24-API\\PRI-TOTEM-24-API\\Totem_API\\Data\\TotemContext.cs",
+              "RelativeToolTip": "Totem_API\\Data\\TotemContext.cs",
+              "ViewState": "AgIAAJ0AAAAAAAAAAAAAwMAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T17:31:42.265Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Bojji\\Desktop\\PROYECTO TOTEM\\PRI-TOTEM-24-API\\PRI-TOTEM-24-API\\Totem_API\\Program.cs",
-              "RelativeDocumentMoniker": "Totem_API\\Program.cs",
-              "ToolTip": "C:\\Users\\Bojji\\Desktop\\PROYECTO TOTEM\\PRI-TOTEM-24-API\\PRI-TOTEM-24-API\\Totem_API\\Program.cs",
-              "RelativeToolTip": "Totem_API\\Program.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAswD0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-18T01:20:00.374Z"
+              "WhenOpened": "2024-10-30T21:32:37.434Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -72,7 +57,7 @@
               "RelativeDocumentMoniker": "Totem_API\\Controllers\\UbicacionesController.cs",
               "ToolTip": "C:\\Users\\Bojji\\Desktop\\PROYECTO TOTEM\\PRI-TOTEM-24-API\\PRI-TOTEM-24-API\\Totem_API\\Controllers\\UbicacionesController.cs",
               "RelativeToolTip": "Totem_API\\Controllers\\UbicacionesController.cs",
-              "ViewState": "AgIAAEkAAAAAAAAAAAAuwFUAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAIIAAAAAAAAAAAAAwJgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-02T02:45:25.4Z",
               "EditorCaption": ""
