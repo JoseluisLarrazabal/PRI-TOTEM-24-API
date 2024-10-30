@@ -139,18 +139,5 @@ namespace Totem_API.Controllers
             return _context.Ubicacion.Any(e => e.Id == id);
         }
 
-
-        [HttpPost]
-        public async Task<IActionResult> CrearUbicacion([FromBody] Ubicacion nuevaUbicacion)
-        {
-            if (nuevaUbicacion == null) return BadRequest();
-
-            _context.Ubicacion.Add(nuevaUbicacion);
-            await _context.SaveChangesAsync();
-
-            return Ok(nuevaUbicacion);
-        }
-
-
     }
 }

@@ -807,22 +807,6 @@
   },
   {
     "ContainingType": "Totem_API.Controllers.UbicacionesController",
-    "Method": "CrearUbicacion",
-    "RelativePath": "api/Ubicaciones",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "nuevaUbicacion",
-        "Type": "Totem_API.Models.Ubicacion",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Totem_API.Controllers.UbicacionesController",
     "Method": "GetUbicacion",
     "RelativePath": "api/Ubicaciones/{id}",
     "HttpMethod": "GET",
