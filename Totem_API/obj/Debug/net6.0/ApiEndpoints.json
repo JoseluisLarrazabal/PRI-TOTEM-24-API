@@ -734,6 +734,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Totem_API.Controllers.TotemsController",
+    "Method": "GetIdByName",
+    "RelativePath": "api/Totems/GetIdByName",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nombre",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "Totem_API.Controllers.TotemLocacionController",
     "Method": "GetTotem",
     "RelativePath": "api/TotemU/{id}",
@@ -766,10 +792,16 @@
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "totemId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Totem_API.Models.Ubicacion, Totem_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Ubicacion, Totem_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -789,13 +821,13 @@
     "Parameters": [
       {
         "Name": "ubicacion",
-        "Type": "Totem_API.Models.Ubicacion",
+        "Type": "Ubicacion",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "Totem_API.Models.Ubicacion",
+        "Type": "Ubicacion",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -821,7 +853,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Totem_API.Models.Ubicacion",
+        "Type": "Ubicacion",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -846,7 +878,7 @@
       },
       {
         "Name": "ubicacion",
-        "Type": "Totem_API.Models.Ubicacion",
+        "Type": "Ubicacion",
         "IsRequired": true
       }
     ],
@@ -870,8 +902,8 @@
   },
   {
     "ContainingType": "Totem_API.Controllers.UbicacionesController",
-    "Method": "GetUbicacionPorNombre",
-    "RelativePath": "api/Ubicaciones/BuscarPorNombre",
+    "Method": "GetUbicacionesPorNombre",
+    "RelativePath": "api/Ubicaciones/PorNombre",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -884,7 +916,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Totem_API.Models.Ubicacion",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Ubicacion, Totem_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

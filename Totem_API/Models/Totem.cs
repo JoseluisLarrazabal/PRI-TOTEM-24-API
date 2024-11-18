@@ -21,5 +21,8 @@ public partial class Totem
 
     public virtual ICollection<Locacion> Locacions { get; } = new List<Locacion>();
 
+    public virtual ICollection<Ubicacion> Ubicaciones { get; set; } = new List<Ubicacion>();
+
+
     public virtual ICollection<Publicidad> Publicidads { get; } = new List<Publicidad>();
 }

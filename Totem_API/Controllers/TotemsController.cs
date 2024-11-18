@@ -94,7 +94,7 @@ namespace Totem_API.Controllers
                 //    // Actualiza la URL de la imagen en la base de datos
                 //    totems.UrlLogo = blobClient.Uri.ToString();
                 //}
-                totems.UrlLogo = ImageConversion.ConvertToBase64(formFile,10);
+                totems.UrlLogo = ImageConversion.ConvertToBase64(formFile, 10);
             }
             if (formFile == null)
             {
@@ -188,7 +188,7 @@ namespace Totem_API.Controllers
             {
 
                 Nombre = inputModel.Nombre,
-                UrlLogo = ImageConversion.ConvertToBase64(inputModel.Imagen,10),
+                UrlLogo = ImageConversion.ConvertToBase64(inputModel.Imagen, 10),
                 NumeroPlantilla = inputModel.NumeroPlantilla,
                 IdUsuario = (int)inputModel.IdUsuario,
             };
@@ -236,10 +236,10 @@ namespace Totem_API.Controllers
         }
 
         [HttpPut, Route("{id}/ModifyStatus")]
-        public async Task<IActionResult> ModifyStatus([FromRoute]int id, [FromBody]int nuevoEstado)
+        public async Task<IActionResult> ModifyStatus([FromRoute] int id, [FromBody] int nuevoEstado)
         {
             var totemFind = await _context.Totems.FirstOrDefaultAsync(t => t.IdTotem.Equals(id));
-            if(totemFind != null)
+            if (totemFind != null)
             {
                 totemFind.Estado = (byte)nuevoEstado;
                 _context.Entry(totemFind).State = EntityState.Modified;
@@ -250,7 +250,7 @@ namespace Totem_API.Controllers
         }
 
         [HttpGet, Route("{id}/GetStatusTotem")]
-        public async Task<IActionResult> GetCurrentStatus([FromRoute]int id)
+        public async Task<IActionResult> GetCurrentStatus([FromRoute] int id)
         {
             var estadoTotem = await _context.Totems.Where(t => t.IdTotem.Equals(id)).Select(t => t.Estado).FirstOrDefaultAsync();
             return Ok(new { estadoActual = (int)estadoTotem });
@@ -260,5 +260,24 @@ namespace Totem_API.Controllers
         {
             return (_context.Totems?.Any(e => e.IdTotem == id)).GetValueOrDefault();
         }
+
+        [HttpGet("GetIdByName")]
+        public async Task<ActionResult<int>> GetIdByName([FromQuery] string nombre)
+        {
+            if (string.IsNullOrEmpty(nombre))
+            {
+                return BadRequest("El nombre no puede estar vacío.");
+            }
+
+            var totem = await _context.Totems.FirstOrDefaultAsync(t => t.Nombre == nombre);
+
+            if (totem == null)
+            {
+                return NotFound($"No se encontró un tótem con el nombre '{nombre}'.");
+            }
+
+            return Ok(totem.IdTotem);
+        }
+
     }
 }

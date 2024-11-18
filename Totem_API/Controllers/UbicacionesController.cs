@@ -18,44 +18,35 @@ namespace Totem_API.Controllers
             _context = context;
         }
 
-        // GET: api/Ubicaciones
+
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Ubicacion>>> GetUbicaciones()
+        public async Task<ActionResult<IEnumerable<Ubicacion>>> GetUbicaciones([FromQuery] int? totemId)
         {
-            return await _context.Ubicacion.ToListAsync();
-        }
-
-        // GET: api/Ubicaciones/BuscarPorNombre
-        [HttpGet("BuscarPorNombre")]
-        public async Task<ActionResult<Ubicacion>> GetUbicacionPorNombre([FromQuery] string nombre)
-        {
-            // Convertimos la primera letra a mayúscula y el resto a minúscula para asegurar coincidencia con la base de datos
-            string nombreFormateado = char.ToUpper(nombre[0]) + nombre.Substring(1).ToLower();
-
-            // Log de verificación
-            Console.WriteLine($"Nombre recibido del frontend: {nombre}");
-            Console.WriteLine($"Nombre formateado: {nombreFormateado}");
-
-            var ubicacion = await _context.Ubicacion.FirstOrDefaultAsync(u => u.Nombre == nombreFormateado);
-
-            if (ubicacion == null)
+            try
             {
-                return NotFound("Ubicación no encontrada.");
+                if (totemId.HasValue)
+                {
+                    var ubicacionesFiltradas = await _context.Ubicacion
+                        .Where(u => u.IdTotem == totemId)
+                        .ToListAsync();
+
+                    if (!ubicacionesFiltradas.Any())
+                    {
+                        return NotFound($"No se encontraron ubicaciones para el tótem con ID {totemId}.");
+                    }
+
+                    return Ok(ubicacionesFiltradas);
+                }
+
+                // Si no se proporciona `totemId`, devuelve todas las ubicaciones
+                return Ok(await _context.Ubicacion.ToListAsync());
             }
-
-            return Ok(new
+            catch (Exception ex)
             {
-                ubicacion.Id,
-                ubicacion.Nombre,
-                ubicacion.Latitud,
-                ubicacion.Longitud,
-                ubicacion.Direccion
-            });
+                Console.WriteLine($"Error en GetUbicaciones: {ex.Message}");
+                return StatusCode(500, "Ocurrió un error interno en el servidor.");
+            }
         }
-
-
-
-
 
         /// GET: api/Ubicaciones/{id}
         [HttpGet("{id}")]
@@ -78,45 +69,104 @@ namespace Totem_API.Controllers
             });
         }
 
-        // POST: api/Ubicaciones
         [HttpPost]
         public async Task<ActionResult<Ubicacion>> PostUbicacion(Ubicacion ubicacion)
         {
-            _context.Ubicacion.Add(ubicacion);
-            await _context.SaveChangesAsync();
+            Console.WriteLine("Datos recibidos:");
+            Console.WriteLine($"Nombre: {ubicacion.Nombre}");
+            Console.WriteLine($"Latitud: {ubicacion.Latitud}");
+            Console.WriteLine($"Longitud: {ubicacion.Longitud}");
+            Console.WriteLine($"Dirección: {ubicacion.Direccion}");
+            Console.WriteLine($"IdTotem: {ubicacion.IdTotem}");
 
-            return CreatedAtAction(nameof(GetUbicacion), new { id = ubicacion.Id }, ubicacion);
+            // Validar si el IdTotem existe en la base de datos
+            if (!await _context.Totems.AnyAsync(t => t.IdTotem == ubicacion.IdTotem))
+            {
+                Console.WriteLine("Error: IdTotem no existe.");
+                return BadRequest("El ID del tótem no es válido.");
+            }
+
+            try
+            {
+                // Guarda la ubicación en la base de datos
+                _context.Ubicacion.Add(ubicacion);
+                await _context.SaveChangesAsync();
+
+                Console.WriteLine("Ubicación guardada exitosamente.");
+                return CreatedAtAction(nameof(GetUbicacion), new { id = ubicacion.Id }, ubicacion);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al guardar la ubicación: {ex.Message}");
+                return StatusCode(500, "Error interno en el servidor.");
+            }
         }
 
         // PUT: api/Ubicaciones/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUbicacion(int id, Ubicacion ubicacion)
+        public async Task<IActionResult> PutUbicacion(int id, [FromBody] Ubicacion ubicacion)
         {
-            if (id != ubicacion.Id)
+            if (ubicacion == null || id <= 0)
             {
-                return BadRequest();
+                return BadRequest("ID o datos inválidos.");
             }
 
-            _context.Entry(ubicacion).State = EntityState.Modified;
+            var ubicacionExistente = await _context.Ubicacion.FindAsync(id);
+            if (ubicacionExistente == null)
+            {
+                return NotFound($"No se encontró una ubicación con ID {id}.");
+            }
+
+            // Actualiza los campos manualmente
+            ubicacionExistente.Nombre = ubicacion.Nombre;
+            ubicacionExistente.Latitud = ubicacion.Latitud;
+            ubicacionExistente.Longitud = ubicacion.Longitud;
+            ubicacionExistente.Direccion = ubicacion.Direccion;
+            ubicacionExistente.IdTotem = ubicacion.IdTotem;
 
             try
             {
                 await _context.SaveChangesAsync();
+                return NoContent();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception ex)
             {
-                if (!UbicacionExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                Console.WriteLine($"Error al actualizar: {ex.Message}");
+                return StatusCode(500, "Error interno del servidor.");
+            }
+        }
+
+
+
+        // GET: api/Ubicaciones/PorNombre
+        [HttpGet("PorNombre")]
+        public async Task<ActionResult<IEnumerable<Ubicacion>>> GetUbicacionesPorNombre([FromQuery] string nombre)
+        {
+            // Verificar si el nombre está vacío o nulo
+            if (string.IsNullOrEmpty(nombre))
+            {
+                return BadRequest("El nombre del tótem no puede estar vacío.");
             }
 
-            return NoContent();
+            // Buscar el ID del tótem basado en el nombre
+            var totem = await _context.Totems.FirstOrDefaultAsync(t => t.Nombre == nombre);
+
+            if (totem == null)
+            {
+                return NotFound($"No se encontró un tótem con el nombre '{nombre}'.");
+            }
+
+            // Buscar ubicaciones asociadas al ID del tótem
+            var ubicaciones = await _context.Ubicacion.Where(u => u.IdTotem == totem.IdTotem).ToListAsync();
+
+            if (!ubicaciones.Any())
+            {
+                return NotFound($"No se encontraron ubicaciones para el tótem con nombre '{nombre}'.");
+            }
+
+            return Ok(ubicaciones);
         }
+
 
         // DELETE: api/Ubicaciones/5
         [HttpDelete("{id}")]
@@ -133,6 +183,7 @@ namespace Totem_API.Controllers
 
             return NoContent();
         }
+
 
         private bool UbicacionExists(int id)
         {
