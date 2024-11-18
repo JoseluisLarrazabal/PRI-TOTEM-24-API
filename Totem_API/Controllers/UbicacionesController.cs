@@ -138,34 +138,25 @@ namespace Totem_API.Controllers
 
 
 
-        // GET: api/Ubicaciones/PorNombre
-        [HttpGet("PorNombre")]
-        public async Task<ActionResult<IEnumerable<Ubicacion>>> GetUbicacionesPorNombre([FromQuery] string nombre)
+        // GET: api/Ubicaciones/BuscarPorNombre
+        [HttpGet("BuscarPorNombre")]
+        public async Task<ActionResult<Ubicacion>> GetUbicacionPorNombre([FromQuery] string nombre)
         {
-            // Verificar si el nombre está vacío o nulo
-            if (string.IsNullOrEmpty(nombre))
+            if (string.IsNullOrWhiteSpace(nombre))
             {
-                return BadRequest("El nombre del tótem no puede estar vacío.");
+                return BadRequest("El nombre no puede estar vacío.");
             }
 
-            // Buscar el ID del tótem basado en el nombre
-            var totem = await _context.Totems.FirstOrDefaultAsync(t => t.Nombre == nombre);
+            var ubicacion = await _context.Ubicacion.FirstOrDefaultAsync(u => u.Nombre == nombre);
 
-            if (totem == null)
+            if (ubicacion == null)
             {
-                return NotFound($"No se encontró un tótem con el nombre '{nombre}'.");
+                return NotFound($"No se encontró una ubicación con el nombre '{nombre}'.");
             }
 
-            // Buscar ubicaciones asociadas al ID del tótem
-            var ubicaciones = await _context.Ubicacion.Where(u => u.IdTotem == totem.IdTotem).ToListAsync();
-
-            if (!ubicaciones.Any())
-            {
-                return NotFound($"No se encontraron ubicaciones para el tótem con nombre '{nombre}'.");
-            }
-
-            return Ok(ubicaciones);
+            return Ok(ubicacion);
         }
+
 
 
         // DELETE: api/Ubicaciones/5

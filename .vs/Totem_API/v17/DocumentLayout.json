@@ -61,7 +61,7 @@
               "RelativeDocumentMoniker": "Totem_API\\Controllers\\UbicacionesController.cs",
               "ToolTip": "C:\\Users\\Bojji\\Desktop\\PROYECTO TOTEM\\PRI-TOTEM-24-API\\PRI-TOTEM-24-API\\Totem_API\\Controllers\\UbicacionesController.cs",
               "RelativeToolTip": "Totem_API\\Controllers\\UbicacionesController.cs",
-              "ViewState": "AgIAAGoAAAAAAAAAAAA4wHgAAAA5AAAAAAAAAA==",
+              "ViewState": "AgIAAIkAAAAAAAAAAAAAAJ4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-02T02:45:25.4Z",
               "EditorCaption": ""
@@ -76,8 +76,7 @@
               "RelativeToolTip": "Totem_API\\Data\\TotemContext.cs",
               "ViewState": "AgIAAHAAAAAAAAAAAAAgwI4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T21:32:37.434Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T21:32:37.434Z"
             }
           ]
         }
